@@ -1,0 +1,153 @@
+---
+import { MenuItems } from "@src/data/menuElements.js";
+---
+
+<header class="header">
+  <ul class="menu">
+    {
+      MenuItems.map((item) => (
+        <li class="menu__item">
+          <a class="menu__link" href={item.link}>
+            {item.text}
+          </a>
+          {item.submenu && (
+            <ul class="submenu">
+              {Array.isArray(item.submenu) ? (
+                item.submenu.map((sub) => (
+                  <li class="submenu__item submenu__item--seccondary">
+                    <a href={sub.link}>{sub.text}</a>
+                    {sub.submenu && (
+                      <ul class='subsubmenu' >
+                        {Array.isArray(sub.submenu) ? (
+                          sub.submenu.map((subsub) => (
+                            <li class=" submenu__item--tertiary">
+                              <a href={subsub.link}>{subsub.text}</a>
+                            </li>
+                          ))
+                        ) : (
+                          <li>
+                            <a href={sub?.submenu?.link}>{sub.submenu.text}</a>
+                          </li>
+                        )}
+                      </ul>
+                    )}
+                  </li>
+                ))
+              ) : (
+                <li class="submenu__item submenu__item--seccondary">
+                  <a href={item.submenu.link}>{item.submenu.text}</a>
+                </li>
+              )}
+            </ul>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</header>
+
+<style>
+  .header {
+    background-color: #f8f9fa;
+    padding: 1rem;
+  }
+
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .menu__link {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    color: #333;
+  }
+
+  .menu__item:hover > .submenu {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .submenu,
+  .subsubmenu {
+    display: none;
+    position: absolute;
+    background-color: #dcdcdc;
+    border: 0.5px solid #3e1c71;
+    list-style: none;
+    z-index: 1000;
+    border-radius: 9px;
+    padding: 1rem 0;
+  }
+  .menu__item {
+    position: relative;
+    margin-right: 1rem;
+    padding: 6px;
+  }
+  .submenu a,
+  .subsubmenu a {
+
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+  .submenu__item--seccondary,
+  .submenu__item--tertiary {
+    position: relative;
+    a {
+      padding: 2rem;
+    }
+    & a:hover {
+      background: rgb(71, 70, 70);
+      color: white;
+    }
+  }
+  .submenu {
+    top: 100%;
+    left: 0;
+  }
+  .subsubmenu {
+    top: 0;
+    left: 100%;
+  }
+  .submenu li {
+    width: 150px;
+  }
+
+  .subsubmenu {
+    position: absolute;
+    min-height: 6dvh;
+  }
+
+  .menu__item:hover > .submenu li:hover > .subsubmenu {
+    display: block;
+    animation: slideRight 0.3s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideRight {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

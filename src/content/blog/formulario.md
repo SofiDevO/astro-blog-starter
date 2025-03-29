@@ -7,7 +7,7 @@ keywords: [ "sofidev"]
 description: "Ejemplos de posts"
 date: "jan 06 2025"
 tags: ["astro"]
-image: "https://blog-sofi.api-wordpress.tech/wp-content/uploads/2024/12/1076536-1024x575.jpg"
+image: "https://res.cloudinary.com/dvjox4xut/images/w_1024,h_576,c_scale/f_webp/v1740897658/evolucionJavascript/evolucionJavascript.png?_i=AA"
 imageAlt: "Placeholder Image"
 body: "Este es un cuerpo de ejemplo para el post. Aquí se agregan los detalles del contenido del artículo."
 readingTime: "3 min"

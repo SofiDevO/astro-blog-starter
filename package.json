@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.7",
+    "astro": "^5.5.5",
     "iconify-icon": "^2.3.0"
   },
   "description": "A starter template built with an atomic structure and optimized SEO configuration. Features include light/dark theme switching, dynamic layouts, and integrated OpenGraph support",

@@ -8,19 +8,15 @@ interface Props {
   description?: string;
   image?: string;
 }
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const getTitle = Astro.url.pathname;
 const titleDinamyc = getTitle.split("/")[1]
 const capitalized = titleDinamyc.charAt(0).toUpperCase() + titleDinamyc.slice(1);
-
 const {
   title = capitalized || SITE_TITLE,
   description = SITE_DESCRIPTION,
   image = "/img/metaBannerSquare.webp",
 } = Astro.props;
-
-
 
 ---
 

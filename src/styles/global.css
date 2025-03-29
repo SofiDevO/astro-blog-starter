@@ -4,16 +4,13 @@
   --color-secondary: #111827;
   --color-tertiary: #13b5ca;
   --date-color: #7164da;
+  --card-background:  radial-gradient(circle at 50% 85%, rgb(26 2 100), rgb(0, 0, 0))
 }
-
 .dark {
-  
-    --color-primary: #0c0c0c;
-    --color-secondary: #f5f5f5;
-   
-  
+  --color-primary: #240f43;
+  --color-secondary: #f5f5f5;
+  --card-background:  radial-gradient(circle at 50% 85%, rgba(39, 15, 112, 0.845), rgb(0 0 0))
 }
-
 * {
   margin: 0;
   padding: 0;

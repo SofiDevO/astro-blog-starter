@@ -6,6 +6,8 @@ const {
   description,
   image,
 } = Astro.props;
+
+import Header from "@organisms/Header/Header.astro";
 ---
 
 <!doctype html>
@@ -15,9 +17,7 @@ const {
   </head>
   <body>
     <ToggleTheme />
-    <header>
-      <h1 class="main-title">Insert your header here</h1>
-    </header>
+      <Header/>
     <main>
       <slot />
     </main>
@@ -26,9 +26,9 @@ const {
 
 
 <style is:global>
- 
+
   main{
-   
+
     padding: 5rem;
 
   }

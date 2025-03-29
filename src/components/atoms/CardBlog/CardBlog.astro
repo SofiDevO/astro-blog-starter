@@ -14,6 +14,7 @@ const { title, img, content, href } = Astro.props;
 	</div>
 </a>
 
+
 <style>
 	.card__parent {
 		display: flex;
@@ -54,14 +55,14 @@ const { title, img, content, href } = Astro.props;
 		justify-content: center;
 		text-align: left;
 		padding: 1rem;
-		background: radial-gradient(circle at 120%  195%, rgba(8, 122, 122, 0.845), rgb(0, 0, 0));
+		background: var(--card-background);
 		border-bottom-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
 		gap: 1rem;
 		height: 18rem;
 	}
 
-	
+
 
 	.card__title {
 		font-size: 1.8rem;

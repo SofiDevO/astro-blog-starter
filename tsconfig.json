@@ -3,7 +3,7 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "strictNullChecks": true, 
+    "strictNullChecks": true,
     "allowJs": true ,
     "baseUrl": ".",
     "paths": {
@@ -13,7 +13,8 @@
       "@components/*": ["./src/components/*"],
       "@atoms/*": ["./src/components/atoms/*"],
       "@molecules/*": ["./src/components/molecules/*"],
-      "@shared/*": ["./src/components/shared/*"],
+      "@organisms/*": ["./src/components/organisms/*"],
+      "@data/*": ["./src/components/data/*"],
       "@utils/*": ["./src/utils/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@pages/*": ["./src/pages/*"],
