@@ -2,70 +2,177 @@
 import { MenuItems } from "@src/data/menuElements.js";
 ---
 
-<header class="header">
-  <ul class="menu">
-    {
-      MenuItems.map((item) => (
-        <li class="menu__item">
-          <a class="menu__link" href={item.link}>
-            {item.text}
-          </a>
-          {item.submenu && (
-            <ul class="submenu">
-              {Array.isArray(item.submenu) ? (
-                item.submenu.map((sub) => (
-                  <li class="submenu__item submenu__item--seccondary">
-                    <a href={sub.link}>{sub.text}</a>
-                    {sub.submenu && (
-                      <ul class='subsubmenu' >
-                        {Array.isArray(sub.submenu) ? (
-                          sub.submenu.map((subsub) => (
-                            <li class=" submenu__item--tertiary">
-                              <a href={subsub.link}>{subsub.text}</a>
-                            </li>
-                          ))
-                        ) : (
-                          <li>
-                            <a href={sub?.submenu?.link}>{sub.submenu.text}</a>
-                          </li>
-                        )}
-                      </ul>
-                    )}
-                  </li>
-                ))
-              ) : (
-                <li class="submenu__item submenu__item--seccondary">
-                  <a href={item.submenu.link}>{item.submenu.text}</a>
-                </li>
-              )}
-            </ul>
-          )}
-        </li>
-      ))
-    }
-  </ul>
-</header>
-
-<style>
-  .header {
-    background-color: #f8f9fa;
-    padding: 1rem;
+<script is:inline>
+  const d = document;
+  function HamburgerButton(hamburgerBtn, panel, menuLink) {
+    d.addEventListener("click", (e) => {
+      if (
+        e.target.matches(hamburgerBtn) ||
+        e.target.matches(`${hamburgerBtn} *`)
+      ) {
+        d.querySelector(hamburgerBtn).classList.toggle("is-active");
+        d.querySelector(panel).classList.toggle("is-active");
+      }
+      if (e.target.matches(menuLink)) {
+        d.querySelector(hamburgerBtn).classList.remove("is-active");
+        d.querySelector(panel).classList.remove("is-active");
+      }
+    });
   }
 
+  d.addEventListener("DOMContentLoaded", (e) => {
+    HamburgerButton(".hamburger", ".menu", ".menu__link");
+  });
+</script>
+<div class="header__container">
+  <header class="header">
+    <button class="hamburger hamburger--emphatic" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <ul class="menu">
+      {
+        MenuItems.map((item) => (
+          <li class="menu__item">
+            <a class="menu__link" href={item.link}>
+              {item.text}
+            </a>
+            {item.submenu && (
+              <ul class="submenu">
+                {Array.isArray(item.submenu) ? (
+                  item.submenu.map((sub) => (
+                    <li class="submenu__item submenu__item--seccondary">
+                      <a href={sub.link}>{sub.text}</a>
+                      {sub.submenu && (
+                        <ul class="subsubmenu">
+                          {Array.isArray(sub.submenu) ? (
+                            sub.submenu.map((subsub) => (
+                              <li class=" submenu__item--tertiary">
+                                <a href={subsub.link}>{subsub.text}</a>
+                              </li>
+                            ))
+                          ) : (
+                            <li>
+                              <a href={sub?.submenu?.link}>
+                                {sub.submenu.text}
+                              </a>
+                            </li>
+                          )}
+                        </ul>
+                      )}
+                    </li>
+                  ))
+                ) : (
+                  <li class="submenu__item submenu__item--seccondary">
+                    <a href={item.submenu.link}>{item.submenu.text}</a>
+                  </li>
+                )}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </header>
+</div>
+<style is:global>
+  .header__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+    position: fixed;
+    margin-top: 2rem;
+    padding: 16px;
+    z-index: 10;
+    @media (width < 768px) {
+      padding: 0.4rem;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+  .header {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    background-color: #0d0d0dcc;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 18px;
+
+    @media (width < 768px) {
+      max-width: 100%;
+      align-self: flex-end;
+    }
+  }
+  .hamburger {
+    display: none;
+    @media (width < 768px) {
+      display: block;
+      z-index: 11;
+    }
+  }
+
+  .hamburger-inner,
+  .hamburger-inner:after,
+  .hamburger-inner:before {
+    background-color: var(--color-tertiary);
+  }
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner:after,
+  .hamburger.is-active .hamburger-inner:before {
+    background-color: var(--color-tertiary);
+  }
   .menu {
+    padding: 1rem;
     list-style: none;
     margin: 0;
-    padding: 0;
     display: flex;
     position: relative;
     flex-wrap: wrap;
+    @media (width < 768px) {
+      flex-direction: column;
+      width: 100vw;
+      background: black;
+      height: 100dvh;
+      position: fixed;
+      top: 0;
+      margin-top: -19px;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(100%);
+      transition: all 0.3s linear;
+    }
+  }
+  .menu.is-active {
+    transform: translateX(0);
   }
 
   .menu__link {
     text-decoration: none;
     padding: 0.5rem 1rem;
     display: block;
-    color: #333;
+    color: var(--color-tertiary);
+    position: relative;
+  }
+  .menu__link::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 100%;
+    transform: scale(0);
+    transform-origin: 1;
+    height: 2px;
+    transition: 0.35s transform;
+    background: var(--color-tertiary);
+  }
+
+  .menu__link:hover::after {
+    transform: scale(1);
   }
 
   .menu__item:hover > .submenu {
@@ -77,12 +184,13 @@ import { MenuItems } from "@src/data/menuElements.js";
   .subsubmenu {
     display: none;
     position: absolute;
-    background-color: #dcdcdc;
+    background-color: #171717;
     border: 0.5px solid #3e1c71;
     list-style: none;
     z-index: 1000;
     border-radius: 9px;
     padding: 1rem 0;
+    z-index: 9000;
   }
   .menu__item {
     position: relative;
@@ -91,10 +199,9 @@ import { MenuItems } from "@src/data/menuElements.js";
   }
   .submenu a,
   .subsubmenu a {
-
     display: block;
     text-decoration: none;
-    color: #333;
+    color: var(--color-tertiary);
   }
   .submenu__item--seccondary,
   .submenu__item--tertiary {
