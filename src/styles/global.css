@@ -31,6 +31,10 @@ body {
   background: var(--color-primary);
   color: var(--color-secondary);
   font-size: 1.6rem;
+
+}
+main{
+  padding: 10rem .7rem ;
 }
 ul,
 ol {
