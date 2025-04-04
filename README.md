@@ -17,7 +17,7 @@ A lightweight starter template with atomic design structure, SEO optimization, a
 
 ```bash
 # Clone template
-npx degit Sofidev/astro-starter#main my-astro-project
+npm create astro@latest -- --template SofiDevO/astro-blog-starter
 
 # Install dependencies
 npm install
