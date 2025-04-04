@@ -1,6 +1,34 @@
 
 # Astro Blog Starter 🌟
 
+A lightweight starter template with atomic design structure, SEO optimization, and modern features. Perfect for fast-paced development!
+
+## Features ✨
+
+- ⚡ SEO Pre-configured (OpenGraph, Meta Tags)
+- 🌓 Light/Dark theme toggle
+- 🧩 Atomic Design structure
+- 🪝 Dynamic dropdown menu
+- 🎨 Vanilla CSS (no frameworks)
+- 📦 Iconify integration
+- 🚀 Production-ready configuration
+
+## Installation ⚙️
+
+```bash
+# Clone template
+npx degit Sofidev/astro-starter#main my-astro-project
+
+# Install dependencies
+npm install
+
+# Start dev server (port 4321)
+npm run dev
+
+# Build for production
+npm run build
+````
+
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Astro](https://img.shields.io/badge/Astro-5.5.5-FF5D01.svg?logo=astro)](https://astro.build)
