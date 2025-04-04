@@ -1,9 +1,11 @@
 
 # Astro Blog Starter 🌟
 
+
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Astro](https://img.shields.io/badge/Astro-5.5.5-FF5D01.svg?logo=astro)](https://astro.build)
 
+![Portada](./public/img/portada.png)
 
 ## Key Components 🔑
 
